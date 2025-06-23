@@ -1,2 +1,3 @@
 # Calculator
 In this repository have a code for calculator
+An actual calculator not gives any instruction to enter a number . Like that, this calculator project not instruct you to enter a number to perform calculations. When you run this code this will wait for the user input. This takes the inputs until the user presses the '=' operator and when the user presses the '=' operator, then the calculator provide the result of the entered expression. Every time use need to press the enter key on the keyboard after entering the number or the operator (also after entering the '=' operator to see the resut)
