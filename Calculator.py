@@ -1,45 +1,26 @@
-# The code for a calculator that takes user inputs and perform arithmetic operations until the user press '='
-def Calculator(): 
-    operators = ['+', '-', '*', '/', '^']
-    currentOperator = None
-    result = None
+def calculate(exp):
+    try:
+        #used to check if user input is valid
+        allowed = set("0123456789+-*/. ")
+        if not set(exp).issubset(allowed): #checks it contains only allowed characters
+            raise ValueError("Invalid characters in expression.")
+        #eval is function that evaluates the expression
+        return eval(exp)
+    except Exception as e:
+        raise ValueError(f"Invalid expression: {e}") #if user input is not valid, it show a error message
+    
 
-    while True:
-        # Taking the input from the user , this can be a number or an operator
-        userInput = input()
+# loop to take user input and calculate the result multiple times
+while True:
+    exp = input("Enter an expression: ")
+    try:
+        result = calculate(exp)
+        print(f"Result: {result}")
+    except Exception as e: #if there is an error in the user input, it will show a error message
+        print(f"Error: {e}")
 
-        # The stopping condition
-        if userInput == '=':
-            break
-
-        #  if the user enters an operator
-        if userInput in operators:
-            currentOperator = userInput
-        else :
-            # means the user enters a number
-            number = float(userInput)
-            if result is None:
-                result = number
-            else :
-                if currentOperator == '+':
-                    result += number
-                elif currentOperator == '-':
-                    result -= number
-                elif currentOperator == '*':
-                    result *= number
-                elif currentOperator == '/':
-                    if number != 0:
-                       result /= number
-                    else:
-                       print("Division by zero not possible ! ")
-                elif currentOperator == '^':
-                    result **= number
-                else:
-                    print("Operation cant be performed !")
-
-    if result != None:
-        print(result)
-    else :
-        print("Caclculation not performed !")
-
-Calculator()
+    forExit = input("write 'exit' to exit or press enter to continue: ")
+    if forExit.lower() == 'exit':
+        break
+    else:
+        continue
